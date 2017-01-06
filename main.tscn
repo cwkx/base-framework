@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=2]
 [ext_resource path="res://sprites/16x16.png" type="Texture" id=3]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fonts/normal.fnt" type="BitmapFont" id=5]
-[ext_resource path="res://fonts/large.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://fonts/large.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://sprites/button.png" type="Texture" id=6]
+[ext_resource path="res://sprites/separator.png" type="Texture" id=7]
 
 [node name="node" type="Node"]
 
@@ -35,7 +36,7 @@ script/script = ExtResource( 2 )
 
 [node name="test shape" type="Sprite" parent="."]
 
-transform/pos = Vector2( 201.017, 124.528 )
+transform/pos = Vector2( 201, 104 )
 texture = ExtResource( 3 )
 centered = false
 
@@ -50,6 +51,7 @@ scale = Vector2( 1, 1 )
 
 [node name="ctr_title" type="Container" parent="hud"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -58,30 +60,27 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 320.0
 margin/bottom = 180.0
+__meta__ = { "_edit_lock_":true }
 
-[node name="anim" type="AnimationPlayer" parent="hud/ctr_title"]
+[node name="title" type="Label" parent="hud/ctr_title"]
 
-playback/process_mode = 1
-playback/default_blend_time = 0.0
-root/root = NodePath("..")
-playback/active = true
-playback/speed = 1.0
-blend_times = [  ]
-autoplay = ""
-
-[node name="TextureButton" type="TextureButton" parent="hud/ctr_title"]
-
-focus/ignore_mouse = false
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
+size_flags/vertical = 0
+margin/left = 119.0
+margin/top = 70.0
+margin/right = 162.0
+margin/bottom = 77.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.925781, 0.773895, 0.773895, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "BASE TITLE"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="subtitle" type="Label" parent="hud/ctr_title"]
 
@@ -89,36 +88,177 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 93.0
-margin/top = 84.0
-margin/right = 219.0
-margin/bottom = 98.0
+margin/left = 112.0
+margin/top = 91.0
+margin/right = 212.0
+margin/bottom = 99.0
 custom_fonts/font = ExtResource( 5 )
-text = "press to start"
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "press to play"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="title" type="Label" parent="hud/ctr_title"]
+[node name="btn_twitter" type="Patch9Frame" parent="hud/ctr_title"]
 
+editor/display_folded = true
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 96.0
+margin/top = 126.0
+margin/right = 128.0
+margin/bottom = 158.0
+texture = ExtResource( 6 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+patch_margin/bottom = 9
+__meta__ = { "_edit_group_":true }
+
+[node name="btn" type="TextureButton" parent="hud/ctr_title/btn_twitter"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+
+[node name="btn_text" type="Label" parent="hud/ctr_title/btn_twitter"]
+
+rect/scale = Vector2( 2, 2 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 89.0
-margin/top = 63.0
-margin/right = 223.0
-margin/bottom = 77.0
-custom_fonts/font = ExtResource( 6 )
-text = "GAME TITLE"
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 16.0
+margin/bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "t"
 align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="btn_play" type="Patch9Frame" parent="hud/ctr_title"]
+
+editor/display_folded = true
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 132.0
+margin/top = 126.0
+margin/right = 188.0
+margin/bottom = 158.0
+texture = ExtResource( 6 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+patch_margin/bottom = 9
+__meta__ = { "_edit_group_":true }
+
+[node name="btn" type="TextureButton" parent="hud/ctr_title/btn_play"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+
+[node name="btn_text" type="Label" parent="hud/ctr_title/btn_play"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 0.0
+margin/right = 30.0
+margin/bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "PLAY"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="btn_facebook" type="Patch9Frame" parent="hud/ctr_title"]
+
+editor/display_folded = true
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 192.0
+margin/top = 126.0
+margin/right = 224.0
+margin/bottom = 158.0
+texture = ExtResource( 6 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+patch_margin/bottom = 9
+__meta__ = { "_edit_group_":true }
+
+[node name="btn" type="TextureButton" parent="hud/ctr_title/btn_facebook"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+
+[node name="btn_text" type="Label" parent="hud/ctr_title/btn_facebook"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 16.0
+margin/bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "f"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="ctr_level_select" type="Container" parent="hud"]
 
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -127,6 +267,245 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 320.0
 margin/bottom = 180.0
+__meta__ = { "_edit_lock_":true }
+
+[node name="panel2" type="Patch9Frame" parent="hud/ctr_level_select"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 143.0
+margin/top = 3.0
+margin/right = 316.0
+margin/bottom = 175.0
+texture = ExtResource( 6 )
+modulate = Color( 0.529412, 0.529412, 0.529412, 1 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+patch_margin/bottom = 9
+
+[node name="panel3" type="Patch9Frame" parent="hud/ctr_level_select"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 143.0
+margin/top = 19.0
+margin/right = 316.0
+margin/bottom = 28.0
+texture = ExtResource( 7 )
+modulate = Color( 0.529412, 0.529412, 0.529412, 1 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+
+[node name="panel1" type="Patch9Frame" parent="hud/ctr_level_select"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 16.0
+margin/top = 6.0
+margin/right = 126.0
+margin/bottom = 24.0
+texture = ExtResource( 6 )
+modulate = Color( 0.529412, 0.529412, 0.529412, 1 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+patch_margin/bottom = 9
+
+[node name="txt_level_select" type="Label" parent="hud/ctr_level_select"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 154.0
+margin/top = 9.0
+margin/right = 204.0
+margin/bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.708542, 0.75103, 0.980469, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Level Select"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="txt_cooldown" type="Label" parent="hud/ctr_level_select"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 33.0
+margin/top = 11.0
+margin/right = 104.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.708542, 0.75103, 0.980469, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Cooldown: 52 sec"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="btn_title" type="Patch9Frame" parent="hud/ctr_level_select"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 154.0
+margin/top = 145.0
+margin/right = 175.0
+margin/bottom = 163.0
+texture = ExtResource( 6 )
+modulate = Color( 0.529412, 0.529412, 0.529412, 1 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+patch_margin/bottom = 9
+
+[node name="btn" type="TextureButton" parent="hud/ctr_level_select/btn_title"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+
+[node name="btn_text" type="Label" parent="hud/ctr_level_select/btn_title"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 9.0
+margin/top = 5.0
+margin/right = 13.0
+margin/bottom = 12.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "<"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="btn_play" type="Patch9Frame" parent="hud/ctr_level_select"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 177.0
+margin/top = 145.0
+margin/right = 256.0
+margin/bottom = 163.0
+texture = ExtResource( 6 )
+modulate = Color( 0.529412, 0.529412, 0.529412, 1 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+patch_margin/bottom = 9
+
+[node name="btn" type="TextureButton" parent="hud/ctr_level_select/btn_play"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+
+[node name="btn_text" type="Label" parent="hud/ctr_level_select/btn_play"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 11.0
+margin/top = 6.0
+margin/right = 30.0
+margin/bottom = 13.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "PLAY MISSION"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="btn_upgrade" type="Patch9Frame" parent="hud/ctr_level_select"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 258.0
+margin/top = 145.0
+margin/right = 306.0
+margin/bottom = 163.0
+texture = ExtResource( 6 )
+modulate = Color( 0.529412, 0.529412, 0.529412, 1 )
+patch_margin/left = 9
+patch_margin/top = 9
+patch_margin/right = 9
+patch_margin/bottom = 9
+
+[node name="btn" type="TextureButton" parent="hud/ctr_level_select/btn_upgrade"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+
+[node name="btn_text" type="Label" parent="hud/ctr_level_select/btn_upgrade"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 7.0
+margin/top = 6.0
+margin/right = 41.0
+margin/bottom = 13.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "UPGRADE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="ctr_upgrade" type="Container" parent="hud"]
 
@@ -138,6 +517,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 320.0
 margin/bottom = 180.0
+__meta__ = { "_edit_lock_":true }
 
 [node name="ctr_shop" type="Container" parent="hud"]
 
@@ -149,6 +529,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 320.0
 margin/bottom = 180.0
+__meta__ = { "_edit_lock_":true }
 
 [node name="ctr_game" type="Container" parent="hud"]
 
@@ -160,5 +541,6 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 320.0
 margin/bottom = 180.0
+__meta__ = { "_edit_lock_":true }
 
 
