@@ -7,5 +7,5 @@ func _ready():
 	pass
 
 func _fixed_process(delta):
-	set_pos(Vector2(player.get_pos().x, player.get_pos().y))
+	set_pos(Vector2(player.get_pos().x + 100, player.get_pos().y))
 	pass

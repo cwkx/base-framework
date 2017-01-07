@@ -17,7 +17,7 @@ scroll/ignore_camera_zoom = true
 
 [node name="Sprite" type="Sprite" parent="."]
 
+transform/pos = Vector2( 160, 90 )
 texture = ExtResource( 1 )
-centered = false
 
 
